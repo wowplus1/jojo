@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>계축 사주 · 2025-05-02 골프운세</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      margin: 0;
+      padding: 2rem 1rem;
+      background: #f4f6f8;
+      color: #333;
+      line-height: 1.6;
+    }
+    .chart-container {
+      max-width: 100%;
+      margin: 2rem auto;
+    }
+    .summary-box {
+      background: #fff;
+      padding: 1.2rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      margin-top: 2rem;
+    }
+    .summary-box p {
+      margin: 1rem 0;
+      font-size: 1rem;
+    }
+    .bubble {
+      background-color: #eaf6ff;
+      border-left: 6px solid #4a90e2;
+      padding: 1rem 1.2rem;
+      margin-bottom: 2rem;
+      border-radius: 10px;
+      max-width: 100%;
+      font-size: 1.1rem;
+      white-space: pre-line;
+    }
+    canvas {
+      width: 100% !important;
+      height: auto !important;
+      max-width: 500px;
+      display: block;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bubble">
+    📊 평균 등급: A<br>
+    균형 잡힌 흐름 속에서 성과를 만들 수 있는 날입니다.
+    안정감 있게 임해보세요.
+  </div>
+
+  <div class="chart-container">
+    <canvas id="golfRadarChart"></canvas>
+  </div>
+
+  <div class="summary-box">
+    <p><strong>집중력: C</strong><br>집중이 잘 되지 않고 자주 흐트러지는 하루입니다.</p>
+    <p><strong>체력: SS</strong><br>몸이 가볍고 에너지가 넘쳐서 오늘은 어떤 라운드도 자신 있게 즐길 수 있습니다.</p>
+    <p><strong>샷 감각: A</strong><br>오늘은 스윙이 전체적으로 안정되며 샷 감각이 고르게 유지됩니다.</p>
+    <p><strong>기운/운: SS</strong><br>오늘은 내면의 기운이 충만해 어떤 도전도 즐겁게 받아들일 수 있습니다.</p>
+    <p><strong>동반자 운: B</strong><br>오늘은 동반자와의 대화에서 약간의 엇갈림이 생길 수 있습니다.</p>
+    <p><strong>전략 감각: S</strong><br>오늘은 전략을 세우는 감각이 날카로워 중요한 선택에 강점을 보입니다.</p>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('golfRadarChart');
+    new Chart(ctx, {
+      type: 'radar',
+      data: {
+        labels: ["집중력", "체력", "샷 감각", "기운/운", "동반자 운", "전략 감각"],
+        datasets: [{
+          data: [2, 6, 4, 6, 3, 5, 2],
+          fill: true,
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+          pointBorderColor: '#fff',
+          pointHoverBackgroundColor: '#fff',
+          pointHoverBorderColor: 'rgba(75, 192, 192, 1)'
+        }]
+      },
+      options: {
+        plugins: {
+          legend: {
+            display: false,
+            labels: {
+              generateLabels: function() { return []; }
+            }
+          },
+          tooltip: {
+            enabled: false
+          }
+        },
+        scales: {
+          r: {
+            min: 0,
+            max: 6,
+            ticks: {
+              stepSize: 1,
+              callback: function(value) {
+                const map = {1:'D',2:'C',3:'B',4:'A',5:'S',6:'SS'};
+                return map[value] || '';
+              }
+            },
+            pointLabels: {
+              font: { size: 14 }
+            }
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
